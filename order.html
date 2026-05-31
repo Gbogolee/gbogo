@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Order a service from Gbogolee Tech — Nigeria's premium tech, design, and development studio." />
+  <title>Order a Service | Gbogolee Tech</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS
+    ========================================================= */
+    :root {
+      --black:      #0a0a0a;
+      --off-black:  #111111;
+      --charcoal:   #1e1e1e;
+      --mid-grey:   #5a5a5a;
+      --light-grey: #c8c8c8;
+      --off-white:  #f5f5f3;
+      --white:      #ffffff;
+
+      --accent:     #e8ff47;     /* electric chartreuse – the one pop of colour */
+      --accent-dim: #d4eb30;
+
+      --glass-bg:   rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.10);
+
+      --font-display: arial;
+      --font-body:    arial;
+
+      --radius-sm:  8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--off-black);
+      color: var(--off-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* =========================================================
+       NOISE OVERLAY
+    ========================================================= */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================================
+       NAV
+    ========================================================= */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 5vw;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--light-grey);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--black) !important;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta:hover { background: var(--accent-dim) !important; transform: scale(1.04); }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* =========================================================
+       MAIN LAYOUT
+    ========================================================= */
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 5vw 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
+    .page-header {
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .page-header .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(232, 255, 71, 0.1);
+      border: 1px solid rgba(232, 255, 71, 0.2);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--light-grey);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       GRID: FORM + SIDEBAR
+    ========================================================= */
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* =========================================================
+       CARD BASE
+    ========================================================= */
+    .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 2.2rem;
+    }
+
+    /* =========================================================
+       ORDER FORM
+    ========================================================= */
+    .order-form { animation: fadeUp 0.6s 0.1s ease both; }
+
+    .form-section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .form-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--glass-border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+    }
+
+    label .required { color: var(--accent); margin-left: 2px; }
+
+    input, select, textarea {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--mid-grey); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(232, 255, 71, 0.5);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 0 0 3px rgba(232, 255, 71, 0.08);
+    }
+
+    input.error, select.error, textarea.error {
+      border-color: #ff4f4f;
+      box-shadow: 0 0 0 3px rgba(255, 79, 79, 0.1);
+    }
+
+    .field-error {
+      font-size: 0.78rem;
+      color: #ff7070;
+      display: none;
+    }
+
+    .field-error.show { display: block; }
+
+    select option { background: var(--charcoal); color: var(--white); }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    .divider {
+      height: 1px;
+      background: var(--glass-border);
+      margin: 1.6rem 0;
+    }
+
+    /* =========================================================
+       SUBMIT BUTTON
+    ========================================================= */
+    .btn-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      background: var(--accent);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 1.05rem 2rem;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(232, 255, 71, 0.25);
+    }
+
+    .btn-submit:hover::before { opacity: 1; }
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-submit i { font-size: 1.1rem; }
+
+    /* loading state */
+    .btn-submit .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(0,0,0,0.3);
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    .btn-submit.loading .spinner { display: block; }
+    .btn-submit.loading .btn-text,
+    .btn-submit.loading i { display: none; }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+    .sidebar { display: flex; flex-direction: column; gap: 1.4rem; animation: fadeUp 0.6s 0.2s ease both; }
+
+    /* Service Quick-Pick */
+    .service-pills-wrap { }
+
+    .service-pills-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.9rem;
+    }
+
+    .service-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--light-grey);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: 100px;
+      padding: 0.38rem 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      user-select: none;
+    }
+
+    .pill:hover { color: var(--white); border-color: rgba(255,255,255,0.25); }
+
+    .pill.selected {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Info card */
+    .info-card { }
+
+    .info-card .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .info-card .info-item:last-child { border-bottom: none; }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(232, 255, 71, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .info-text { font-size: 0.85rem; color: var(--light-grey); line-height: 1.5; }
+    .info-text strong { display: block; color: var(--white); font-weight: 500; font-size: 0.875rem; }
+
+    /* WhatsApp direct */
+    .wa-card {
+      background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(37,211,102,0.04));
+      border: 1px solid rgba(37,211,102,0.2);
+    }
+
+    .wa-card .wa-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .wa-card p {
+      font-size: 0.82rem;
+      color: var(--light-grey);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: #25d366;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-wa:hover { background: #1fba58; transform: translateY(-1px); }
+
+    /* =========================================================
+       SUCCESS OVERLAY
+    ========================================================= */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .success-overlay.show { display: flex; }
+
+    .success-box {
+      background: var(--charcoal);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 460px;
+      width: 100%;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(232, 255, 71, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.4rem;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    .success-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .success-box p {
+      color: var(--light-grey);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .success-box .btn-submit { max-width: 260px; margin: 0 auto; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--mid-grey);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-grey);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .footer-social a:hover { color: var(--accent); border-color: rgba(232,255,71,0.3); background: rgba(232,255,71,0.07); }
+
+    .footer-copy {
+      width: 100%;
+      font-size: 0.78rem;
+      color: var(--mid-grey);
+      text-align: center;
+    }
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 900px) {
+      .order-grid { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+
+      /* Collapse sidebar cards into a horizontal scroll row for pills */
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.97); padding: 1.5rem 5vw; gap: 1.4rem; border-bottom: 1px solid var(--glass-border); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      main { padding: 3rem 5vw 4rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand"><img src="logo.jpg" alt="" style="width: auto; height: 50px; border-radius: 30%;">Gbogolee<span>.</span>Tech</a>
+
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="order.html" class="nav-cta active">Order Service</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="tag"><i class="fa-solid fa-bolt"></i> Ready to start?</div>
+      <h1>Place Your <em>Service</em><br>Order</h1>
+      <p>Fill in the form below and your request will be sent directly to our WhatsApp. We'll get back to you within hours.</p>
+    </header>
+
+    <!-- Grid -->
+    <div class="order-grid">
+
+      <!-- ======================================================
+           ORDER FORM CARD
+      ====================================================== -->
+      <div class="card order-form" role="form" aria-label="Service order form">
+
+        <!-- Section: Your Details -->
+        <p class="form-section-title"><i class="fa-regular fa-circle-user"></i> Your Details</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. John Doe" autocomplete="name" />
+            <span class="field-error" id="err-fullName">Please enter your full name.</span>
+          </div>
+          <div class="form-group">
+            <label for="brandName">Brand / Company Name <span class="required">*</span></label>
+            <input type="text" id="brandName" name="brandName" placeholder="e.g. Doe Enterprise" />
+            <span class="field-error" id="err-brandName">Please enter your brand name.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 08012345678" autocomplete="tel" />
+            <span class="field-error" id="err-phone">Please enter a valid phone number.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" autocomplete="email" />
+            <span class="field-error" id="err-email">Please enter a valid email address.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location (City / State) <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="e.g. Lagos, Nigeria" autocomplete="address-level2" />
+          <span class="field-error" id="err-location">Please enter your location.</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Section: Service Details -->
+        <p class="form-section-title"><i class="fa-regular fa-clipboard"></i> Service Details</p>
+
+        <div class="form-group">
+          <label for="service">Service Needed <span class="required">*</span></label>
+          <select id="service" name="service">
+            <option value="" disabled selected>— Select a service —</option>
+            <option value="Phone Repair">Phone Repair Services</option>
+            <option value="Laptop Maintenance & Repair">Laptop Maintenance &amp; Repair</option>
+            <option value="Web Design & Development">Web Design &amp; Development</option>
+            <option value="Coding & Programming Solutions">Coding &amp; Programming Solutions</option>
+            <option value="Flyer Design">Flyer Design</option>
+            <option value="Logo Design">Logo Design</option>
+            <option value="Graphics Design">Graphics Design</option>
+            <option value="CBT System Development">CBT System Development</option>
+            <option value="Website Deployment">Website Deployment</option>
+            <option value="Tech Consultation">Tech Consultation</option>
+            <option value="Digital Branding">Digital Branding</option>
+            <option value="Portfolio Website Creation">Portfolio Website Creation</option>
+          </select>
+          <span class="field-error" id="err-service">Please select a service.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Detailed Description <span class="required">*</span></label>
+          <textarea id="description" name="description" placeholder="Describe what you need in as much detail as possible. Include any references, deadlines, or special requirements…"></textarea>
+          <span class="field-error" id="err-description">Please describe the service you need.</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Submit -->
+        <button class="btn-submit" id="submitBtn" type="button" aria-label="Submit order via WhatsApp">
+          <span class="btn-text"><i class="fa-brands fa-whatsapp"></i> Send Order via WhatsApp</span>
+          <div class="spinner" role="status" aria-label="Processing…"></div>
+        </button>
+
+      </div><!-- /order-form -->
+
+
+      <!-- ======================================================
+           SIDEBAR
+      ====================================================== -->
+      <aside class="sidebar" aria-label="Order sidebar">
+
+        <!-- Quick service picker -->
+        <div class="card service-pills-wrap">
+          <p class="service-pills-title">Quick Pick — Service</p>
+          <div class="service-pills" id="pillContainer" role="list" aria-label="Service quick select">
+            <span class="pill" role="listitem" data-value="Phone Repair">📱 Phone Repair</span>
+            <span class="pill" role="listitem" data-value="Laptop Maintenance &amp; Repair">💻 Laptop Repair</span>
+            <span class="pill" role="listitem" data-value="Web Design &amp; Development">🌐 Web Design</span>
+            <span class="pill" role="listitem" data-value="Coding &amp; Programming Solutions">👨‍💻 Coding</span>
+            <span class="pill" role="listitem" data-value="Flyer Design">🖼️ Flyer Design</span>
+            <span class="pill" role="listitem" data-value="Logo Design">✏️ Logo Design</span>
+            <span class="pill" role="listitem" data-value="Graphics Design">🎨 Graphics</span>
+            <span class="pill" role="listitem" data-value="CBT System Development">🖥️ CBT System</span>
+            <span class="pill" role="listitem" data-value="Website Deployment">🚀 Deployment</span>
+            <span class="pill" role="listitem" data-value="Tech Consultation">🤝 Consultation</span>
+            <span class="pill" role="listitem" data-value="Digital Branding">💡 Branding</span>
+            <span class="pill" role="listitem" data-value="Portfolio Website Creation">📂 Portfolio Site</span>
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="card info-card">
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="info-text">
+              <strong>Oladejo Oluwagbogo Isabela</strong>
+              Owner, Gbogolee Tech
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-text">
+              <strong>Email</strong>
+              <a href="mailto:oladejooluwagbogo@gmail.com" style="color:var(--light-grey);text-decoration:none;">oladejooluwagbogo@gmail.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-text">
+              <strong>Location</strong>
+              Nigeria
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="info-text">
+              <strong>Response Time</strong>
+              Usually within a few hours
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp direct -->
+        <div class="card wa-card">
+          <p class="wa-title"><i class="fa-brands fa-whatsapp"></i> Prefer a direct chat?</p>
+          <p>Skip the form and message us directly on WhatsApp for a quick conversation about your project.</p>
+          <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer" class="btn-wa">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+
+      </aside>
+    </div><!-- /order-grid -->
+
+  </main>
+
+
+  <!-- ============================================================
+       SUCCESS OVERLAY
+  ============================================================ -->
+  <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-box">
+      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <h2 id="successTitle">Order Submitted!</h2>
+      <p>Your details have been packaged and you're being redirected to WhatsApp. If the redirect didn't open, tap the button below.</p>
+      <button class="btn-submit" id="waFallbackBtn" type="button">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="btn-text">Open WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <span class="footer-brand">Gbogolee<span>.</span>Tech</span>
+
+    <ul class="footer-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="footer-social">
+      <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:oladejooluwagbogo@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <p class="footer-copy">&copy; <span id="year"></span> Gbogolee Tech — All rights reserved. Built with precision in Nigeria.</p>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ============================================================
+       UTILITY: set copyright year
+    ============================================================ */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+    /* ============================================================
+       NAVIGATION: hamburger toggle
+    ============================================================ */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav when a link is clicked (mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+
+    /* ============================================================
+       SERVICE PILLS: click to fill the <select>
+    ============================================================ */
+    const serviceSelect  = document.getElementById('service');
+    const pillContainer  = document.getElementById('pillContainer');
+
+    pillContainer.addEventListener('click', (e) => {
+      const pill = e.target.closest('.pill');
+      if (!pill) return;
+
+      // Deselect all
+      pillContainer.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+
+      // Select clicked
+      pill.classList.add('selected');
+
+      // Set the <select> value
+      const val = pill.getAttribute('data-value');
+      serviceSelect.value = val;
+
+      // Clear error if any
+      clearError('service');
+    });
+
+    // Sync pills when <select> changes via keyboard / direct interaction
+    serviceSelect.addEventListener('change', () => {
+      const val = serviceSelect.value;
+      pillContainer.querySelectorAll('.pill').forEach(p => {
+        p.classList.toggle('selected', p.getAttribute('data-value') === val);
+      });
+      clearError('service');
+    });
+
+
+    /* ============================================================
+       FORM VALIDATION
+    ============================================================ */
+    const fields = [
+      { id: 'fullName',    errId: 'err-fullName',    test: v => v.trim().length >= 2 },
+      { id: 'brandName',   errId: 'err-brandName',   test: v => v.trim().length >= 1 },
+      { id: 'phone',       errId: 'err-phone',       test: v => /^[0-9+\s\-()]{7,}$/.test(v.trim()) },
+      { id: 'email',       errId: 'err-email',       test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      { id: 'location',    errId: 'err-location',    test: v => v.trim().length >= 2 },
+      { id: 'service',     errId: 'err-service',     test: v => v !== '' },
+      { id: 'description', errId: 'err-description', test: v => v.trim().length >= 10 },
+    ];
+
+    function clearError(fieldId) {
+      const el = document.getElementById(fieldId);
+      const err = document.getElementById('err-' + fieldId);
+      if (el)  el.classList.remove('error');
+      if (err) err.classList.remove('show');
+    }
+
+    function validateForm() {
+      let valid = true;
+      fields.forEach(({ id, errId, test }) => {
+        const el  = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!test(el.value)) {
+          el.classList.add('error');
+          err.classList.add('show');
+          if (valid) el.focus();   // focus first invalid field
+          valid = false;
+        } else {
+          el.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+      return valid;
+    }
+
+    // Live validation on blur
+    fields.forEach(({ id, errId, test }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur', () => {
+        const err = document.getElementById(errId);
+        if (!test(el.value)) {
+          el.classList.add('error');
+          err.classList.add('show');
+        } else {
+          el.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+    });
+
+
+    /* ============================================================
+       WHATSAPP MESSAGE BUILDER
+    ============================================================ */
+    let waURL = '';
+
+    function buildWhatsAppURL() {
+      const name   = document.getElementById('fullName').value.trim();
+      const brand  = document.getElementById('brandName').value.trim();
+      const phone  = document.getElementById('phone').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const loc    = document.getElementById('location').value.trim();
+      const svc    = document.getElementById('service').value;
+      const desc   = document.getElementById('description').value.trim();
+
+      const message = `Hello Gbogolee Tech,
+
+I would like to order a service.
+
+👤 Name: ${name}
+🏷️ Brand: ${brand}
+🛠️ Service: ${svc}
+📍 Location: ${loc}
+📞 Phone: ${phone}
+📧 Email: ${email}
+
+📝 Description:
+${desc}`;
+
+      return 'https://wa.me/2349052832966?text=' + encodeURIComponent(message);
+    }
+
+
+    /* ============================================================
+       SUBMIT HANDLER
+    ============================================================ */
+    const submitBtn      = document.getElementById('submitBtn');
+    const successOverlay = document.getElementById('successOverlay');
+    const waFallbackBtn  = document.getElementById('waFallbackBtn');
+
+    submitBtn.addEventListener('click', () => {
+      if (!validateForm()) return;
+
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      // Build the URL
+      waURL = buildWhatsAppURL();
+
+      // Small delay for UX polish, then redirect
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+
+        // Show success overlay
+        successOverlay.classList.add('show');
+
+        // Open WhatsApp
+        window.open(waURL, '_blank', 'noopener,noreferrer');
+      }, 800);
+    });
+
+    // Fallback button inside overlay
+    waFallbackBtn.addEventListener('click', () => {
+      if (waURL) window.open(waURL, '_blank', 'noopener,noreferrer');
+    });
+
+    // Close overlay on backdrop click
+    successOverlay.addEventListener('click', (e) => {
+      if (e.target === successOverlay) successOverlay.classList.remove('show');
+    });
+
+    // Close overlay on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') successOverlay.classList.remove('show');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gbogolee Tech – Premium tech services in Nigeria. Phone repair, web design, software development, graphic design, and more." />
+  <meta name="keywords" content="tech services Nigeria, web design, phone repair, laptop repair, graphic design, Gbogolee Tech" />
+  <meta name="author" content="Oladejo Oluwagbogo Isabela" />
+  <title>Gbogolee Tech | Premium Tech Solutions in Nigeria</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="about.html">
+<link rel="stylesheet" href="order.html">
+<link rel="stylesheet" href="contact.html">
+<link rel="stylesheet" href="services.html">
+<link rel="stylesheet" href="portfolio.html">
+<link rel="stylesheet" href="reviews.html">
+<link rel="stylesheet" href="testimonials.html">
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --black:      #0a0a0a;
+      --off-black:  #111111;
+      --charcoal:   #1e1e1e;
+      --mid-grey:   #6b6b6b;
+      --light-grey: #e8e8e8;
+      --off-white:  #f9f9f7;
+      --white:      #ffffff;
+      --accent:     #0057ff;
+      --accent-dim: rgba(0, 87, 255, 0.08);
+      --glass-bg:   rgba(255,255,255,0.72);
+      --glass-border: rgba(255,255,255,0.4);
+      --shadow-soft: 0 8px 40px rgba(0,0,0,0.07);
+      --shadow-card: 0 2px 24px rgba(0,0,0,0.06);
+      --shadow-hover:0 16px 60px rgba(0,0,0,0.12);
+      --font-display: arial;
+      --font-body:    arial;
+      --nav-h:        72px;
+      --radius:       16px;
+      --radius-sm:    10px;
+      --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--mid-grey);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-top: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,87,255,0.28); }
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 1.5px solid var(--light-grey);
+    }
+    .btn-outline:hover { border-color: var(--black); background: var(--black); color: var(--white); transform: translateY(-2px); }
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--white);
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.3); }
+
+    /* ============================================================
+       NOISE TEXTURE OVERLAY
+    ============================================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+    }
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo-mark {
+      width: 40px; height: 40px;
+      background: var(--black);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--black);
+      line-height: 1.1;
+    }
+    .nav-logo-text span {
+      font-weight: 400;
+      color: var(--mid-grey);
+      font-size: 11px;
+      display: block;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-dim); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-cta { margin-left: 12px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--black);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger:hover { background: var(--light-grey); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 20px 24px 28px;
+      z-index: 999;
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+    .mobile-menu.open { display: block; transform: translateY(0); opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      padding: 13px 0;
+      border-bottom: 1px solid var(--light-grey);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+    /* Geometric background elements */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    .hero-bg-circle-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,87,255,0.06) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero-bg-circle-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+    }
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .hero-content {}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--off-white);
+      border: 1px solid var(--light-grey);
+      border-radius: 100px;
+      padding: 8px 16px 8px 10px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+    .hero-badge span {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 70px);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s ease forwards;
+    }
+    .hero-heading .line-accent {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-heading .line-accent::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+    .hero-description {
+      font-size: 17px;
+      color: var(--mid-grey);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s ease forwards;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s ease forwards;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--light-grey);
+      opacity: 0;
+      animation: fadeUp 0.7s 0.8s ease forwards;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.03em;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--mid-grey);
+      margin-top: 2px;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      opacity: 0;
+      animation: fadeLeft 0.9s 0.4s ease forwards;
+    }
+    .hero-card-main {
+      background: var(--black);
+      border-radius: 24px;
+      padding: 36px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card-main::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,87,255,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .hero-service-chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 12px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    .hero-service-chip:hover { background: rgba(255,255,255,0.14); }
+    .hero-service-chip i { color: var(--accent); font-size: 13px; }
+    .hero-card-main-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .hero-card-main-heading {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    /* Floating badges */
+    .float-badge {
+      position: absolute;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .float-badge-1 { top: -20px; right: -20px; animation-delay: 0s; }
+    .float-badge-2 { bottom: 20px; left: -30px; animation-delay: 1.5s; }
+    .float-badge i { font-size: 18px; color: var(--accent); }
+    .float-badge-text { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--black); line-height: 1.2; }
+    .float-badge-sub { font-size: 11px; color: var(--mid-grey); font-weight: 400; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(36px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ============================================================
+       MARQUEE STRIP
+    ============================================================ */
+    .marquee-strip {
+      background: var(--black);
+      color: var(--white);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 36px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.85);
+    }
+    .marquee-item::before {
+      content: '◆';
+      color: var(--accent);
+      font-size: 8px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       SERVICES PREVIEW
+    ============================================================ */
+    .services-preview {
+      padding: 110px 0;
+      background: var(--white);
+    }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      border: 1px solid var(--light-grey);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      z-index: 0;
+    }
+    .service-card:hover::before { transform: scaleY(1); }
+    .service-card:hover { border-color: var(--black); box-shadow: var(--shadow-hover); }
+    .service-card > * { position: relative; z-index: 1; }
+    .service-card:hover .service-icon-wrap { background: rgba(255,255,255,0.1); }
+    .service-card:hover .service-card-title,
+    .service-card:hover .service-card-desc,
+    .service-card:hover .service-card-link { color: var(--white); }
+    .service-card:hover .service-card-link i { color: var(--white); }
+    .service-icon-wrap {
+      width: 52px; height: 52px;
+      background: var(--off-white);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      transition: var(--transition);
+    }
+    .service-icon-wrap i { font-size: 20px; color: var(--accent); }
+    .service-card:hover .service-icon-wrap i { color: var(--accent); }
+    .service-card-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 10px;
+      transition: color var(--transition);
+    }
+    .service-card-desc {
+      font-size: 14px;
+      color: var(--mid-grey);
+      line-height: 1.6;
+      transition: color var(--transition);
+    }
+    .service-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--black);
+      transition: color var(--transition);
+    }
+    .service-card-link i { font-size: 12px; transition: transform 0.2s; color: var(--mid-grey); }
+    .service-card:hover .service-card-link i { transform: translateX(4px); }
+
+    /* ============================================================
+       WHY CHOOSE US
+    ============================================================ */
+    .why-section {
+      padding: 110px 0;
+      background: var(--off-white);
+    }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .why-visual {
+      position: relative;
+    }
+    .why-big-card {
+      background: var(--black);
+      border-radius: 24px;
+      padding: 48px 40px;
+      color: var(--white);
+    }
+    .why-big-card-icon {
+      font-size: 40px;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .why-big-card h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .why-big-card p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+    .why-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .why-metric {
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .why-metric-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .why-metric-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+    .why-points { list-style: none; }
+    .why-point {
+      display: flex;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .why-point:last-child { border-bottom: none; }
+    .why-point-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .why-point-icon i { color: var(--accent); font-size: 16px; }
+    .why-point-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .why-point-desc {
+      font-size: 13.5px;
+      color: var(--mid-grey);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       PORTFOLIO PREVIEW
+    ============================================================ */
+    .portfolio-preview {
+      padding: 110px 0;
+      background: var(--white);
+    }
+    .portfolio-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 60px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .port-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: var(--off-white);
+      aspect-ratio: 4/3;
+      transition: var(--transition);
+    }
+    .port-item:first-child {
+      grid-row: 1 / 3;
+      aspect-ratio: unset;
+    }
+    .port-item:hover .port-overlay { opacity: 1; }
+    .port-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .port-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--off-white) 0%, var(--light-grey) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .port-placeholder i { font-size: 32px; color: var(--light-grey); }
+    .port-placeholder-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: #ccc;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .port-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .port-overlay-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .port-overlay-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .portfolio-footer { text-align: center; margin-top: 44px; }
+
+    /* ============================================================
+       REVIEWS PREVIEW
+    ============================================================ */
+    .reviews-preview {
+      padding: 110px 0;
+      background: var(--black);
+      color: var(--white);
+    }
+    .reviews-header { text-align: center; margin-bottom: 60px; }
+    .reviews-header .section-title { color: var(--white); }
+    .reviews-header .section-subtitle { color: rgba(255,255,255,0.5); margin: 14px auto 0; }
+    .reviews-rating-summary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 52px;
+      flex-wrap: wrap;
+    }
+    .rating-big-num {
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .rating-stars { display: flex; gap: 4px; margin-bottom: 6px; }
+    .rating-stars i { color: #f59e0b; font-size: 18px; }
+    .rating-count { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .reviews-divider { width: 1px; height: 80px; background: rgba(255,255,255,0.12); }
+    .rating-bars { display: flex; flex-direction: column; gap: 6px; min-width: 200px; }
+    .rating-bar-row { display: flex; align-items: center; gap: 10px; }
+    .rating-bar-label { font-size: 12px; color: rgba(255,255,255,0.5); width: 32px; text-align: right; font-family: var(--font-display); font-weight: 600; }
+    .rating-bar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+    .rating-bar-fill { height: 100%; background: #f59e0b; border-radius: 2px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: var(--transition);
+    }
+    .review-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-4px); }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .review-stars i { color: #f59e0b; font-size: 14px; }
+    .review-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .review-role { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta-section {
+      padding: 110px 0;
+      background: var(--white);
+    }
+    .cta-inner {
+      background: linear-gradient(135deg, var(--black) 0%, #111 100%);
+      border-radius: 28px;
+      padding: 80px 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: 100px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(0,87,255,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+    .cta-subtitle {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 72px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 260px;
+    }
+    .footer-socials { display: flex; gap: 10px; margin-top: 24px; }
+    .footer-social {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    .footer-social:hover { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+    }
+    .footer-contact-item i { color: var(--accent); font-size: 13px; width: 16px; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-made {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-made span { color: #ef4444; }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why-visual { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .port-item:first-child { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/7; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 48px 0; }
+      .hero-visual { display: none; }
+      .hero-stats { gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-divider { display: none; }
+      .cta-inner { grid-template-columns: 1fr; padding: 44px 32px; }
+      .cta-actions { flex-direction: row; flex-wrap: wrap; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .port-item:first-child { aspect-ratio: 4/3; }
+      .rating-big-num { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo" aria-label="Gbogolee Tech Home">
+          <div class="nav-logo-mark" aria-hidden="true"><a href="logo.jpg"><img src="logo.jpg" alt=""></a></div>
+          <div class="nav-logo-text">
+            Gbogolee Tech
+            <span>Premium Tech Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="order.html" class="btn btn-primary nav-cta" aria-label="Order a service">
+          Order Service <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <a href="order.html">Order Service</a>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="home" aria-label="Hero section">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-circle hero-bg-circle-1"></div>
+      <div class="hero-bg-circle hero-bg-circle-2"></div>
+      <div class="hero-bg-grid"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <!-- Content -->
+        <div class="hero-content">
+          <div class="hero-badge" aria-label="Available for projects">
+            <div class="hero-badge-dot" aria-hidden="true"></div>
+            <span>Available for New Projects · Nigeria</span>
+          </div>
+
+          <h1 class="hero-heading">
+            We Build<br />
+            <span class="line-accent">Tech That</span><br />
+            Works For You
+          </h1>
+
+          <p class="hero-description">
+            From phone repairs to full-scale web platforms, Gbogolee Tech delivers
+            premium digital solutions tailored for businesses across Nigeria.
+          </p>
+
+          <div class="hero-actions">
+            <a href="order.html" class="btn btn-primary" aria-label="Order a service now">
+              Order Service <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="portfolio.html" class="btn btn-outline" aria-label="View our work">
+              View Our Work
+            </a>
+            <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer"
+               class="btn btn-whatsapp" aria-label="Chat on WhatsApp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
+            </a>
+          </div>
+
+          <div class="hero-stats" aria-label="Key statistics">
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="150">0+</div>
+              <div class="hero-stat-label">Projects Done</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="100">0+</div>
+              <div class="hero-stat-label">Happy Clients</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num" data-count="12">0+</div>
+              <div class="hero-stat-label">Services Offered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Panel -->
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Floating badges -->
+          <div class="float-badge float-badge-1">
+            <i class="fas fa-star" style="color:#f59e0b"></i>
+            <div class="float-badge-text">
+              Top Rated
+              <div class="float-badge-sub">5.0 on Google</div>
+            </div>
+          </div>
+
+          <div class="float-badge float-badge-2">
+            <i class="fas fa-bolt" style="color:var(--accent)"></i>
+            <div class="float-badge-text">
+              Fast Delivery
+              <div class="float-badge-sub">On-time guarantee</div>
+            </div>
+          </div>
+
+          <!-- Main dark card -->
+          <div class="hero-card-main">
+            <div class="hero-card-main-title">What We Offer</div>
+            <div class="hero-card-main-heading">12 Premium<br />Tech Services</div>
+            <div class="hero-card-grid">
+              <div class="hero-service-chip"><i class="fas fa-globe"></i> Web Design</div>
+              <div class="hero-service-chip"><i class="fas fa-mobile-alt"></i> Phone Repair</div>
+              <div class="hero-service-chip"><i class="fas fa-laptop"></i> Laptop Repair</div>
+              <div class="hero-service-chip"><i class="fas fa-palette"></i> Logo Design</div>
+              <div class="hero-service-chip"><i class="fas fa-code"></i> Development</div>
+              <div class="hero-service-chip"><i class="fas fa-bullhorn"></i> Digital Branding</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MARQUEE STRIP
+  ============================================================ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <div class="marquee-item">Web Design</div>
+      <div class="marquee-item">Phone Repair</div>
+      <div class="marquee-item">Logo Design</div>
+      <div class="marquee-item">Laptop Maintenance</div>
+      <div class="marquee-item">CBT Systems</div>
+      <div class="marquee-item">Digital Branding</div>
+      <div class="marquee-item">Graphics Design</div>
+      <div class="marquee-item">Tech Consultation</div>
+      <div class="marquee-item">Website Deployment</div>
+      <div class="marquee-item">Coding Solutions</div>
+      <div class="marquee-item">Flyer Design</div>
+      <div class="marquee-item">Portfolio Websites</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item">Web Design</div>
+      <div class="marquee-item">Phone Repair</div>
+      <div class="marquee-item">Logo Design</div>
+      <div class="marquee-item">Laptop Maintenance</div>
+      <div class="marquee-item">CBT Systems</div>
+      <div class="marquee-item">Digital Branding</div>
+      <div class="marquee-item">Graphics Design</div>
+      <div class="marquee-item">Tech Consultation</div>
+      <div class="marquee-item">Website Deployment</div>
+      <div class="marquee-item">Coding Solutions</div>
+      <div class="marquee-item">Flyer Design</div>
+      <div class="marquee-item">Portfolio Websites</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SERVICES PREVIEW
+  ============================================================ -->
+  <section class="services-preview" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <div class="section-tag reveal">What We Do</div>
+          <h2 class="section-title reveal reveal-delay-1" id="services-title">
+            Services Built for<br />Modern Nigeria
+          </h2>
+          <p class="section-subtitle reveal reveal-delay-2">
+            From hardware to software, we cover every layer of your digital and physical tech needs.
+          </p>
+        </div>
+        <a href="services.html" class="btn btn-outline reveal reveal-delay-2" aria-label="See all services">
+          All Services <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <article class="service-card reveal">
+          <div class="service-icon-wrap"><i class="fas fa-globe" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">Web Design & Development</h3>
+          <p class="service-card-desc">Modern, responsive websites and web apps that convert visitors into customers. From landing pages to full platforms.</p>
+          <a href="services.html#web-design" class="service-card-link" aria-label="Learn more about web design">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">Phone & Laptop Repair</h3>
+          <p class="service-card-desc">Fast, reliable repairs for smartphones and laptops. Screen replacements, battery fixes, software troubleshooting, and more.</p>
+          <a href="services.html#repairs" class="service-card-link" aria-label="Learn more about repairs">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap"><i class="fas fa-paint-brush" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">Graphics & Logo Design</h3>
+          <p class="service-card-desc">Stunning brand visuals including logos, flyers, banners, and complete brand identity packages that make you stand out.</p>
+          <a href="services.html#design" class="service-card-link" aria-label="Learn more about design">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap"><i class="fas fa-code" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">Coding & Programming</h3>
+          <p class="service-card-desc">Custom software, automation scripts, and programming solutions. We solve complex technical problems with clean, efficient code.</p>
+          <a href="services.html#coding" class="service-card-link" aria-label="Learn more about coding">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap"><i class="fas fa-desktop" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">CBT System Development</h3>
+          <p class="service-card-desc">Computer-Based Testing platforms for schools and institutions. Secure, scalable, and easy to manage examination systems.</p>
+          <a href="services.html#cbt" class="service-card-link" aria-label="Learn more about CBT systems">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="service-card reveal reveal-delay-3">
+          <div class="service-icon-wrap"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
+          <h3 class="service-card-title">Digital Branding & Consultation</h3>
+          <p class="service-card-desc">Strategic tech consulting and digital brand positioning to help your business grow faster and smarter in today's digital landscape.</p>
+          <a href="services.html#branding" class="service-card-link" aria-label="Learn more about digital branding">
+            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY CHOOSE US
+  ============================================================ -->
+  <section class="why-section" id="why" aria-labelledby="why-title">
+    <div class="container">
+      <div class="why-inner">
+        <!-- Visual -->
+        <div class="why-visual" aria-hidden="true">
+          <div class="why-big-card">
+            <div class="why-big-card-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Trusted by Clients<br />Across Nigeria</h3>
+            <p>We deliver quality tech solutions that businesses rely on. Every project gets our full attention and expertise.</p>
+            <div class="why-metrics">
+              <div class="why-metric">
+                <div class="why-metric-num">150+</div>
+                <div class="why-metric-label">Projects Completed</div>
+              </div>
+              <div class="why-metric">
+                <div class="why-metric-num">100%</div>
+                <div class="why-metric-label">Client Satisfaction</div>
+              </div>
+              <div class="why-metric">
+                <div class="why-metric-num">48hr</div>
+                <div class="why-metric-label">Avg. Turnaround</div>
+              </div>
+              <div class="why-metric">
+                <div class="why-metric-num">3yr+</div>
+                <div class="why-metric-label">In Business</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Points -->
+        <div>
+          <div class="section-tag reveal">Why Gbogolee Tech</div>
+          <h2 class="section-title reveal reveal-delay-1" id="why-title">
+            The Standard You<br />Deserve in Tech
+          </h2>
+          <p class="section-subtitle reveal reveal-delay-2">
+            We don't just provide services — we build lasting relationships backed by real expertise and genuine care.
+          </p>
+
+          <ul class="why-points" style="margin-top:36px;" role="list">
+            <li class="why-point reveal reveal-delay-1">
+              <div class="why-point-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+              <div>
+                <div class="why-point-title">Fast & Reliable Delivery</div>
+                <div class="why-point-desc">We respect your time. Projects are delivered on schedule without compromising quality.</div>
+              </div>
+            </li>
+            <li class="why-point reveal reveal-delay-2">
+              <div class="why-point-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+              <div>
+                <div class="why-point-title">Premium Quality Work</div>
+                <div class="why-point-desc">Every output meets agency-level standards — clean, professional, and built to last.</div>
+              </div>
+            </li>
+            <li class="why-point reveal reveal-delay-3">
+              <div class="why-point-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
+              <div>
+                <div class="why-point-title">Dedicated After-Service Support</div>
+                <div class="why-point-desc">Our relationship doesn't end at delivery. We offer ongoing support and maintenance for all services.</div>
+              </div>
+            </li>
+            <li class="why-point reveal reveal-delay-4">
+              <div class="why-point-icon"><i class="fas fa-naira-sign" aria-hidden="true"></i></div>
+              <div>
+                <div class="why-point-title">Affordable Nigerian Pricing</div>
+                <div class="why-point-desc">World-class quality at prices built for Nigerian businesses. No hidden charges, no surprises.</div>
+              </div>
+            </li>
+          </ul>
+
+          <div style="margin-top:36px;" class="reveal reveal-delay-5">
+            <a href="about.html" class="btn btn-primary" aria-label="Learn more about us">
+              Learn More About Us <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO PREVIEW
+  ============================================================ -->
+  <section class="portfolio-preview" id="portfolio" aria-labelledby="portfolio-title">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="section-tag">Our Work</div>
+        <h2 class="section-title" id="portfolio-title">Crafted With Purpose,<br />Built to Impress</h2>
+        <p class="section-subtitle" style="margin: 14px auto 0;">A peek at some of our most impactful projects delivered across Nigeria.</p>
+      </div>
+
+      <div class="portfolio-grid reveal reveal-delay-1">
+        <!-- Featured project -->
+        <div class="port-item">
+          <div class="port-placeholder">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <div class="port-placeholder-label">Web Project</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-overlay-tag">Web Design</div>
+            <div class="port-overlay-title">Business Website — Lagos Client</div>
+          </div>
+        </div>
+
+        <div class="port-item">
+          <div class="port-placeholder">
+            <i class="fas fa-paint-brush" aria-hidden="true"></i>
+            <div class="port-placeholder-label">Logo Design</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-overlay-tag">Brand Identity</div>
+            <div class="port-overlay-title">Logo Suite — Startup Brand</div>
+          </div>
+        </div>
+
+        <div class="port-item">
+          <div class="port-placeholder">
+            <i class="fas fa-image" aria-hidden="true"></i>
+            <div class="port-placeholder-label">Flyer Design</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-overlay-tag">Graphics Design</div>
+            <div class="port-overlay-title">Event Flyer Series</div>
+          </div>
+        </div>
+
+        <div class="port-item">
+          <div class="port-placeholder">
+            <i class="fas fa-desktop" aria-hidden="true"></i>
+            <div class="port-placeholder-label">CBT System</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-overlay-tag">CBT Development</div>
+            <div class="port-overlay-title">Exam Portal — Secondary School</div>
+          </div>
+        </div>
+
+        <div class="port-item">
+          <div class="port-placeholder">
+            <i class="fas fa-user-circle" aria-hidden="true"></i>
+            <div class="port-placeholder-label">Portfolio Site</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-overlay-tag">Web Design</div>
+            <div class="port-overlay-title">Portfolio — Freelancer Client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-footer reveal">
+        <a href="portfolio.html" class="btn btn-primary" aria-label="View full portfolio">
+          View Full Portfolio <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS PREVIEW
+  ============================================================ -->
+  <section class="reviews-preview" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <div class="section-tag">Client Reviews</div>
+        <h2 class="section-title" id="reviews-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Real feedback from real clients who trusted Gbogolee Tech with their projects.</p>
+      </div>
+
+      <!-- Rating summary -->
+      <div class="reviews-rating-summary reveal reveal-delay-1" aria-label="Overall rating">
+        <div>
+          <div class="rating-big-num" aria-label="4.9 out of 5">4.9</div>
+          <div class="rating-stars" aria-label="5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+          </div>
+          <div class="rating-count">Based on 80+ reviews</div>
+        </div>
+        <div class="reviews-divider" aria-hidden="true"></div>
+        <div class="rating-bars" aria-label="Rating breakdown">
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">5★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:85%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">4★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:10%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">3★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">2★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">1★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review cards -->
+      <div class="reviews-grid">
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="review-text">"Gbogolee Tech delivered my business website in record time. The design was exactly what I envisioned and it works perfectly on all devices."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">AO</div>
+            <div>
+              <div class="review-name">Adewale Okonkwo</div>
+              <div class="review-role">Business Owner, Lagos</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-delay-1">
+          <div class="review-stars" aria-label="5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="review-text">"My phone screen was replaced in under 2 hours. Professional service, fair pricing, and they even cleaned the phone interior. Highly recommend."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">FN</div>
+            <div>
+              <div class="review-name">Fatima Nwachukwu</div>
+              <div class="review-role">Student, Abuja</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card reveal reveal-delay-2">
+          <div class="review-stars" aria-label="5 stars">
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="review-text">"The CBT system built for our school has transformed how we conduct exams. Zero glitches, easy to use for both teachers and students."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">DA</div>
+            <div>
+              <div class="review-name">Dr. Amaka David</div>
+              <div class="review-role">School Principal, Ibadan</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align:center; margin-top:44px;" class="reveal">
+        <a href="reviews.html" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.3);"
+           aria-label="Read all reviews">
+          Read All Reviews <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA SECTION
+  ============================================================ -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div>
+          <h2 class="cta-title">Ready to Transform<br />Your Tech Vision?</h2>
+          <p class="cta-subtitle">Let's talk about your project. Get a free consultation and custom quote today.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="order.html" class="btn btn-primary" style="background:var(--white); color:var(--black);"
+             aria-label="Start your order">
+            Start Order <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer"
+             class="btn btn-whatsapp" aria-label="Chat with us on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div>
+          <a href="index.html" class="nav-logo" style="display:inline-flex;" aria-label="Gbogolee Tech Home">
+            <div class="nav-logo-mark" aria-hidden="true">GT</div>
+            <div class="nav-logo-text" style="color:#fff;">
+              Gbogolee Tech
+              <span style="color:rgba(255,255,255,0.4);">Premium Tech Solutions</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            Your trusted partner for premium tech services in Nigeria. From repairs to full digital solutions, we build tech that works for you.
+          </p>
+          <div class="footer-socials" aria-label="Social media links">
+            <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="footer-social" aria-label="Twitter / X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer"
+               class="footer-social" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <nav aria-label="Footer quick links">
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="testimonials.html">Testimonials</a>
+          </div>
+        </nav>
+
+        <!-- Services -->
+        <nav aria-label="Footer services links">
+          <div class="footer-col-title">Services</div>
+          <div class="footer-links">
+            <a href="services.html">Web Design</a>
+            <a href="services.html">Phone Repair</a>
+            <a href="services.html">Laptop Repair</a>
+            <a href="services.html">Logo Design</a>
+            <a href="services.html">CBT Systems</a>
+          </div>
+        </nav>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-col-title">Contact Us</div>
+          <address style="font-style:normal;">
+            <div class="footer-contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:oladejooluwagbogo@gmail.com" style="color:rgba(255,255,255,0.6);">
+                oladejooluwagbogo@gmail.com
+              </a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer"
+                 style="color:rgba(255,255,255,0.6);">
+                +234 905 283 2966
+              </a>
+            </div>
+            <div class="footer-contact-item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span>Nigeria</span>
+            </div>
+          </address>
+          <div style="margin-top:20px;">
+            <a href="order.html" class="btn btn-primary" style="padding:11px 22px; font-size:13px;"
+               aria-label="Order a service">
+              Order Service <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="year"></span> Gbogolee Tech. All rights reserved.
+        </div>
+        <div class="footer-made">
+          Built with <span aria-label="love">♥</span> by Oladejo Oluwagbogo Isabela
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ----------------------------------------------------------
+       Navbar scroll behaviour
+    ---------------------------------------------------------- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    /* ----------------------------------------------------------
+       Mobile menu toggle
+    ---------------------------------------------------------- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      // Animate hamburger icon
+      const spans = hamburger.querySelectorAll('span');
+      if (isOpen) {
+        spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+        spans[1].style.opacity  = '0';
+        spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity   = '';
+        spans[2].style.transform = '';
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity   = '';
+        spans[2].style.transform = '';
+      });
+    });
+
+    /* ----------------------------------------------------------
+       Scroll reveal
+    ---------------------------------------------------------- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ----------------------------------------------------------
+       Animated stat counters
+    ---------------------------------------------------------- */
+    function animateCounter(el, target, suffix) {
+      let start = 0;
+      const duration = 1800;
+      const step = 16;
+      const increment = target / (duration / step);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(start) + suffix;
+      }, step);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'));
+          animateCounter(el, target, '+');
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => statsObserver.observe(el));
+
+    /* ----------------------------------------------------------
+       Footer year
+    ---------------------------------------------------------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

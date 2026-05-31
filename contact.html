@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Gbogolee Tech — reach out via email, WhatsApp, or our contact form for any tech, design or development enquiry." />
+  <title>Contact Us | Gbogolee Tech</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    /* ── Replace with your own Firebase project config ── */
+    const firebaseConfig = {
+      apiKey:            "YOUR_API_KEY",
+      authDomain:        "YOUR_PROJECT.firebaseapp.com",
+      projectId:         "YOUR_PROJECT_ID",
+      storageBucket:     "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId:             "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    /* Expose to global scope so the inline handler can reach it */
+    window._gbFirestore   = db;
+    window._gbCollection  = collection;
+    window._gbAddDoc      = addDoc;
+    window._gbTimestamp   = serverTimestamp;
+  </script>
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS  (matches order.html palette)
+    ========================================================= */
+    :root {
+      --black:        #0a0a0a;
+      --off-black:    #111111;
+      --charcoal:     #1e1e1e;
+      --mid-grey:     #5a5a5a;
+      --light-grey:   #c8c8c8;
+      --off-white:    #f5f5f3;
+      --white:        #ffffff;
+
+      --accent:       #e8ff47;
+      --accent-dim:   #d4eb30;
+
+      --glass-bg:     rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.10);
+
+      --font-display: arial;
+      --font-body:    arial;
+
+      --radius-sm:    8px;
+      --radius-md:    16px;
+      --radius-lg:    28px;
+
+      --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--off-black);
+      color: var(--off-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* noise grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================================
+       NAV
+    ========================================================= */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 5vw;
+      background: rgba(10,10,10,0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--light-grey);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--black) !important;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--accent-dim) !important; transform: scale(1.04); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 5vw 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
+    .page-header {
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(232,255,71,0.1);
+      border: 1px solid rgba(232,255,71,0.2);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .page-header h1 em { font-style: normal; color: var(--accent); }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--light-grey);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       CONTACT CHANNELS — top row
+    ========================================================= */
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s 0.05s ease both;
+    }
+
+    .channel-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+      text-decoration: none;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .channel-card:hover {
+      border-color: rgba(232,255,71,0.3);
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-3px);
+    }
+
+    .channel-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba(232,255,71,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* WhatsApp card gets green tint */
+    .channel-card.wa .channel-icon {
+      background: rgba(37,211,102,0.12);
+      color: #25d366;
+    }
+    .channel-card.wa { border-color: rgba(37,211,102,0.15); }
+    .channel-card.wa:hover { border-color: rgba(37,211,102,0.4); background: rgba(37,211,102,0.05); }
+
+    .channel-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+    }
+    .channel-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      word-break: break-all;
+    }
+    .channel-sub {
+      font-size: 0.8rem;
+      color: var(--light-grey);
+    }
+
+    /* =========================================================
+       GRID: FORM + SIDEBAR
+    ========================================================= */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* =========================================================
+       CARD BASE
+    ========================================================= */
+    .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 2.2rem;
+    }
+
+    /* =========================================================
+       CONTACT FORM
+    ========================================================= */
+    .contact-form { animation: fadeUp 0.6s 0.1s ease both; }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--glass-border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.1rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--light-grey);
+    }
+    label .req { color: var(--accent); margin-left: 2px; }
+
+    input, select, textarea {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--mid-grey); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(232,255,71,0.5);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 0 0 3px rgba(232,255,71,0.08);
+    }
+    input.error, select.error, textarea.error {
+      border-color: #ff4f4f;
+      box-shadow: 0 0 0 3px rgba(255,79,79,0.10);
+    }
+    .field-error {
+      font-size: 0.78rem;
+      color: #ff7070;
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    select option { background: var(--charcoal); color: var(--white); }
+    textarea { resize: vertical; min-height: 140px; }
+
+    .divider { height: 1px; background: var(--glass-border); margin: 1.6rem 0; }
+
+    /* =========================================================
+       SUBMIT BUTTON
+    ========================================================= */
+    .btn-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      background: var(--accent);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 1.05rem 2rem;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .btn-submit:hover {
+      background: var(--accent-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(232,255,71,0.25);
+    }
+    .btn-submit:hover::before { opacity: 1; }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(0,0,0,0.3);
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .btn-submit.loading .spinner { display: block; }
+    .btn-submit.loading .btn-text,
+    .btn-submit.loading i { display: none; }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    /* Info items */
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .info-item:last-child { border-bottom: none; }
+
+    .info-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(232,255,71,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .info-text { font-size: 0.85rem; color: var(--light-grey); line-height: 1.55; }
+    .info-text strong {
+      display: block;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.1rem;
+    }
+    .info-text a { color: var(--light-grey); text-decoration: none; transition: color var(--transition); }
+    .info-text a:hover { color: var(--accent); }
+
+    /* WhatsApp card */
+    .wa-card {
+      background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(37,211,102,0.04));
+      border: 1px solid rgba(37,211,102,0.2);
+    }
+    .wa-card .wa-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .wa-card p { font-size: 0.82rem; color: var(--light-grey); margin-bottom: 1rem; line-height: 1.6; }
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.8rem;
+      background: #25d366;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-wa:hover { background: #1fba58; transform: translateY(-1px); }
+
+    /* Map placeholder */
+    .map-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      aspect-ratio: 4/3;
+      position: relative;
+      background: var(--charcoal);
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      filter: grayscale(1) invert(0.85) contrast(0.9);
+    }
+    .map-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: rgba(17,17,17,0.72);
+      backdrop-filter: blur(4px);
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .map-overlay i { font-size: 2rem; color: var(--accent); }
+    .map-overlay p { font-size: 0.85rem; color: var(--light-grey); line-height: 1.5; }
+    .map-overlay strong { color: var(--white); font-size: 0.95rem; }
+    .map-open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 0.3rem;
+      border-bottom: 1px solid rgba(232,255,71,0.3);
+      padding-bottom: 1px;
+      transition: border-color var(--transition);
+    }
+    .map-open-link:hover { border-color: var(--accent); }
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      max-width: 340px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .toast.success { background: #1a2e1a; border: 1px solid rgba(37,211,102,0.35); }
+    .toast.success .toast-icon { color: #25d366; }
+    .toast.error   { background: #2e1a1a; border: 1px solid rgba(255,79,79,0.35); }
+    .toast.error   .toast-icon { color: #ff7070; }
+    .toast-icon    { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--white); }
+    .footer-brand span { color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: 0.82rem; color: var(--mid-grey); text-decoration: none; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--white); }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--light-grey);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .footer-social a:hover { color: var(--accent); border-color: rgba(232,255,71,0.3); background: rgba(232,255,71,0.07); }
+    .footer-copy { width: 100%; font-size: 0.78rem; color: var(--mid-grey); text-align: center; }
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 960px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .channels { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        padding: 1.5rem 5vw;
+        gap: 1.4rem;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .channels { grid-template-columns: 1fr; }
+      main { padding: 3rem 5vw 4rem; }
+      .toast { left: 1rem; right: 1rem; bottom: 1rem; max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand"><img src="logo.jpg" alt="" style="width: auto; height: 30px; border-radius: 50%;">Gbogolee<span>.</span>Tech</a>
+
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="order.html" class="nav-cta">Order Service</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="tag"><i class="fa-solid fa-paper-plane"></i> Get in touch</div>
+      <h1>Let's <em>Talk</em><br>About Your Project</h1>
+      <p>Have a question, an idea, or a project in mind? Drop us a message and we'll get back to you as quickly as possible.</p>
+    </header>
+
+    <!-- Contact Channels -->
+    <div class="channels" role="list" aria-label="Contact channels">
+
+      <a href="mailto:oladejooluwagbogo@gmail.com" class="channel-card" role="listitem">
+        <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <p class="channel-label">Email us</p>
+          <p class="channel-value">oladejooluwagbogo@gmail.com</p>
+          <p class="channel-sub">Response within 24 hours</p>
+        </div>
+      </a>
+
+      <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer" class="channel-card wa" role="listitem">
+        <div class="channel-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div>
+          <p class="channel-label">WhatsApp</p>
+          <p class="channel-value">+234 905 283 2966</p>
+          <p class="channel-sub">Usually replies in hours</p>
+        </div>
+      </a>
+
+      <div class="channel-card" role="listitem">
+        <div class="channel-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <p class="channel-label">Location</p>
+          <p class="channel-value">Nigeria</p>
+          <p class="channel-sub">Remote-friendly, serving clients worldwide</p>
+        </div>
+      </div>
+
+    </div><!-- /channels -->
+
+
+    <!-- Contact Grid -->
+    <div class="contact-grid">
+
+      <!-- ====================================================
+           CONTACT FORM
+      ==================================================== -->
+      <div class="card contact-form">
+
+        <p class="section-title"><i class="fa-regular fa-envelope"></i> Send a Message</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cfName">Full Name <span class="req">*</span></label>
+            <input type="text" id="cfName" name="name" placeholder="Your full name" autocomplete="name" />
+            <span class="field-error" id="err-cfName">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="cfEmail">Email Address <span class="req">*</span></label>
+            <input type="email" id="cfEmail" name="email" placeholder="you@example.com" autocomplete="email" />
+            <span class="field-error" id="err-cfEmail">Please enter a valid email.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cfPhone">Phone Number</label>
+            <input type="tel" id="cfPhone" name="phone" placeholder="e.g. 08012345678" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="cfSubject">Subject <span class="req">*</span></label>
+            <select id="cfSubject" name="subject">
+              <option value="" disabled selected>— Choose a subject —</option>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Service Request">Service Request</option>
+              <option value="Project Quote">Project Quote</option>
+              <option value="Tech Support">Tech Support</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="field-error" id="err-cfSubject">Please choose a subject.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cfMessage">Message <span class="req">*</span></label>
+          <textarea id="cfMessage" name="message" placeholder="Tell us about your enquiry or project in detail…"></textarea>
+          <span class="field-error" id="err-cfMessage">Please write a message (at least 10 characters).</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn-submit" id="cfSubmitBtn" type="button" aria-label="Send message">
+          <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Send Message</span>
+          <div class="spinner" role="status" aria-label="Sending…"></div>
+        </button>
+
+      </div><!-- /contact-form -->
+
+
+      <!-- ====================================================
+           SIDEBAR
+      ==================================================== -->
+      <aside class="sidebar" aria-label="Contact information">
+
+        <!-- Contact detail card -->
+        <div class="card">
+          <p class="section-title" style="margin-bottom:1rem;"><i class="fa-solid fa-address-card"></i> Contact Info</p>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="info-text">
+              <strong>Oladejo Oluwagbogo Isabela</strong>
+              Owner &amp; Lead Developer
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-text">
+              <strong>Email</strong>
+              <a href="mailto:oladejooluwagbogo@gmail.com">oladejooluwagbogo@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="info-text">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer">+234 905 283 2966</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-text">
+              <strong>Location</strong>
+              Nigeria — available remotely worldwide
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="info-text">
+              <strong>Business Hours</strong>
+              Mon – Sat, 8 AM – 8 PM (WAT)
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp direct card -->
+        <div class="card wa-card">
+          <p class="wa-title"><i class="fa-brands fa-whatsapp"></i> Prefer instant replies?</p>
+          <p>Skip the form and message us directly on WhatsApp. We typically respond within a few hours.</p>
+          <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer" class="btn-wa">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+
+        <!-- Map placeholder -->
+        <div>
+          <p class="section-title" style="margin-bottom:0.9rem;font-size:0.8rem;color:var(--mid-grey);">
+            <i class="fa-solid fa-map-pin"></i> Our Location
+          </p>
+          <div class="map-wrap" role="img" aria-label="Map showing Nigeria">
+            <!-- Google Maps embed — replace YOUR_EMBED_URL with a real embed src when deploying -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7926.123456789!2d3.3792!3d6.5244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1234567890"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Gbogolee Tech location in Nigeria"
+            ></iframe>
+            <div class="map-overlay">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <strong>Nigeria</strong>
+              <p>Serving clients across Nigeria and remotely worldwide.</p>
+              <a href="https://maps.google.com/?q=Ibadan,Nigeria" target="_blank" rel="noopener noreferrer" class="map-open-link">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div><!-- /contact-grid -->
+
+  </main>
+
+
+  <!-- ============================================================
+       TOAST NOTIFICATION
+  ============================================================ -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <span class="footer-brand">Gbogolee<span>.</span>Tech</span>
+
+    <ul class="footer-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="order.html">Order Service</a></li>
+    </ul>
+
+    <div class="footer-social">
+      <a href="https://wa.me/2349052832966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:oladejooluwagbogo@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <p class="footer-copy">&copy; <span id="year"></span> Gbogolee Tech — All rights reserved. Built with precision in Nigeria.</p>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ── Copyright year ── */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ── Hamburger toggle ── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    }));
+
+    /* ============================================================
+       TOAST HELPER
+    ============================================================ */
+    let toastTimer = null;
+
+    function showToast(msg, type = 'success') {
+      const toast    = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      const toastIcon= document.getElementById('toastIcon');
+
+      toast.className = 'toast ' + type;
+      toastMsg.textContent = msg;
+      toastIcon.innerHTML  = type === 'success'
+        ? '<i class="fa-solid fa-circle-check"></i>'
+        : '<i class="fa-solid fa-circle-exclamation"></i>';
+
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+    }
+
+    /* ============================================================
+       FORM VALIDATION
+    ============================================================ */
+    const fields = [
+      { id: 'cfName',    errId: 'err-cfName',    test: v => v.trim().length >= 2 },
+      { id: 'cfEmail',   errId: 'err-cfEmail',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      { id: 'cfSubject', errId: 'err-cfSubject', test: v => v !== '' },
+      { id: 'cfMessage', errId: 'err-cfMessage', test: v => v.trim().length >= 10 },
+    ];
+
+    function validateForm() {
+      let valid = true;
+      fields.forEach(({ id, errId, test }) => {
+        const el  = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!test(el.value)) {
+          el.classList.add('error');
+          err.classList.add('show');
+          if (valid) el.focus();
+          valid = false;
+        } else {
+          el.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+      return valid;
+    }
+
+    /* Live blur validation */
+    fields.forEach(({ id, errId, test }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur', () => {
+        const err = document.getElementById(errId);
+        if (!test(el.value)) {
+          el.classList.add('error');
+          err.classList.add('show');
+        } else {
+          el.classList.remove('error');
+          err.classList.remove('show');
+        }
+      });
+    });
+
+    /* ============================================================
+       SUBMIT — saves to Firebase, shows toast
+    ============================================================ */
+    document.getElementById('cfSubmitBtn').addEventListener('click', async () => {
+      if (!validateForm()) return;
+
+      const btn = document.getElementById('cfSubmitBtn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      const payload = {
+        name:      document.getElementById('cfName').value.trim(),
+        email:     document.getElementById('cfEmail').value.trim(),
+        phone:     document.getElementById('cfPhone').value.trim(),
+        subject:   document.getElementById('cfSubject').value,
+        message:   document.getElementById('cfMessage').value.trim(),
+        createdAt: window._gbTimestamp ? window._gbTimestamp() : new Date().toISOString(),
+      };
+
+      try {
+        /* ── Firebase write ── */
+        if (window._gbFirestore && window._gbCollection && window._gbAddDoc) {
+          await window._gbAddDoc(
+            window._gbCollection(window._gbFirestore, 'contact_messages'),
+            payload
+          );
+        } else {
+          /* Firebase not yet initialised — log locally for testing */
+          console.info('[Gbogolee Tech] Contact form payload (Firebase not configured):', payload);
+          await new Promise(r => setTimeout(r, 900)); // simulate network
+        }
+
+        /* Clear form */
+        ['cfName','cfEmail','cfPhone','cfMessage'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+        document.getElementById('cfSubject').value = '';
+
+        showToast('Message sent! We\'ll be in touch soon.', 'success');
+
+      } catch (err) {
+        console.error('[Gbogolee Tech] Contact form error:', err);
+        showToast('Something went wrong. Please try again or contact us on WhatsApp.', 'error');
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gbogolee Tech offers premium tech services including phone repair, web design, logo design, CBT systems, and more — based in Nigeria." />
+  <meta name="keywords" content="Gbogolee Tech, web design Nigeria, phone repair, logo design, CBT system, tech consultation" />
+  <meta name="author" content="Oladejo Oluwagbogo Isabela" />
+  <title>Services — Gbogolee Tech</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Rete.js -->
+  <script src="https://cdn.jsdelivr.net/npm/rete@2.0.0/build/index.min.js"></script>
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES — GBOGOLEE TECH BRAND
+       ============================================= */
+    :root {
+      --black:     #0a0a0a;
+      --white:     #ffffff;
+      --grey-100:  #f5f5f5;
+      --grey-200:  #e8e8e8;
+      --grey-400:  #9e9e9e;
+      --grey-600:  #5c5c5c;
+      --accent:    #1a1a2e;       /* deep navy for tech feel */
+      --accent2:   #e8ff00;       /* electric yellow spark */
+      --accent3:   #00c9a7;       /* teal highlight */
+      --glass-bg:  rgba(255,255,255,0.65);
+      --glass-border: rgba(255,255,255,0.4);
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg: 0 24px 64px rgba(0,0,0,0.14);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --font-display: arial;
+      --font-body:    arial;
+      --transition:   0.36s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* ============ RESET & BASE ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============ SCROLLBAR ============ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--grey-100); }
+    ::-webkit-scrollbar-thumb { background: var(--black); border-radius: 99px; }
+
+    /* ============ NOISE TEXTURE OVERLAY ============ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ============ NAVIGATION ============ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--grey-200);
+      padding: 0 clamp(1.2rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo span {
+      background: var(--black);
+      color: var(--accent2);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.85em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--grey-600);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--black);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-cta {
+      background: var(--black);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 99px;
+      font-weight: 600 !important;
+      font-size: 0.84rem !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      border-radius: 99px;
+      transition: var(--transition);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--grey-400); }
+    .close-menu {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--black);
+    }
+
+    /* ============ PAGE HERO ============ */
+    .page-hero {
+      position: relative;
+      padding: clamp(5rem, 12vw, 9rem) clamp(1.2rem, 6vw, 5rem) clamp(3rem, 6vw, 5rem);
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(232,255,0,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(0,201,167,0.06) 0%, transparent 60%);
+      z-index: 0;
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--grey-100);
+      border: 1px solid var(--grey-200);
+      border-radius: 99px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-600);
+      margin-bottom: 1.5rem;
+    }
+    .badge i { color: var(--accent3); font-size: 0.7rem; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--black);
+    }
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--grey-400);
+    }
+    .page-hero p {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--grey-600);
+      max-width: 500px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ============ SECTION WRAPPER ============ */
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.2rem, 6vw, 5rem);
+      position: relative;
+    }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--grey-400);
+      border-radius: 99px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--grey-600);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ============ SERVICES GRID ============ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover {
+      border-color: transparent;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card-number {
+      position: absolute;
+      top: 1.5rem; right: 1.8rem;
+      font-family: var(--font-display);
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: var(--grey-200);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      user-select: none;
+      transition: color var(--transition);
+    }
+    .service-card:hover .service-card-number { color: var(--grey-100); }
+    .service-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      background: var(--grey-100);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      color: var(--black);
+      transition: background var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .service-card:hover .service-icon-wrap {
+      background: var(--black);
+      color: var(--accent2);
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--grey-600);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .service-benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .service-benefits li {
+      font-size: 0.82rem;
+      color: var(--grey-600);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+    .service-benefits li i {
+      color: var(--accent3);
+      font-size: 0.7rem;
+      margin-top: 0.28rem;
+      flex-shrink: 0;
+    }
+    .service-cta {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.65rem 1.3rem;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      width: fit-content;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      font-family: var(--font-body);
+    }
+    .service-cta:hover {
+      background: var(--accent);
+      transform: translateX(4px);
+    }
+    .service-cta i { font-size: 0.75rem; }
+
+    /* ============ WORKFLOW / RETE SECTION ============ */
+    .workflow-section {
+      background: var(--grey-100);
+      border-top: 1px solid var(--grey-200);
+      border-bottom: 1px solid var(--grey-200);
+    }
+    #rete-container {
+      width: 100%;
+      height: 460px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--grey-200);
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Fallback visual workflow (always visible) */
+    .workflow-visual {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 2.5rem 1rem;
+    }
+    .workflow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+    }
+    .wf-node {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--grey-200);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      cursor: default;
+    }
+    .wf-node:hover {
+      border-color: var(--accent3);
+      box-shadow: var(--shadow-md);
+      transform: scale(1.07);
+    }
+    .wf-node i {
+      font-size: 1.4rem;
+      color: var(--black);
+    }
+    .wf-node span {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      padding: 0 0.4rem;
+      line-height: 1.2;
+    }
+    .wf-step-num {
+      font-size: 0.7rem;
+      color: var(--grey-400);
+      font-weight: 600;
+    }
+    .wf-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 0.3rem;
+      margin-bottom: 1.8rem;
+    }
+    .wf-arrow i {
+      color: var(--grey-400);
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      .workflow-visual { flex-direction: column; }
+      .wf-arrow { transform: rotate(90deg); margin-bottom: 0; margin-right: 0; }
+    }
+
+    /* ============ STATS STRIP ============ */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--grey-200);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin: 0 clamp(1.2rem, 6vw, 5rem);
+    }
+    .stat-item {
+      background: var(--white);
+      padding: 2.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.3rem;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--black);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--grey-400);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ============ CTA STRIP ============ */
+    .cta-strip {
+      margin: 4rem clamp(1.2rem, 6vw, 5rem);
+      background: var(--black);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem clamp(2rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(232,255,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-strip::after {
+      content: '';
+      position: absolute;
+      left: -60px; bottom: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-text { position: relative; z-index: 1; }
+    .cta-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .cta-text p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.92rem;
+      margin-top: 0.6rem;
+      font-weight: 300;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent2);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.55);
+      padding: 3rem clamp(1.2rem, 6vw, 5rem) 1.8rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 280px;
+    }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-contact a:hover { color: var(--accent2); }
+    .footer-contact i { font-size: 0.8rem; width: 14px; }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .footer-social a:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+      background: rgba(232,255,0,0.06);
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .page-hero-inner > * {
+      animation: fadeUp 0.8s cubic-bezier(0.23,1,0.32,1) both;
+    }
+    .page-hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .page-hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+    .page-hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .cta-strip { text-align: center; justify-content: center; }
+      .cta-buttons { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav aria-label="Main navigation">
+    <a class="nav-logo" href="index.html">
+      <span><img src="logo.jpg" alt="" style="width: auto; height: 50px; border-radius: 50%;"></span> Gbogolee Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="order.html" class="nav-cta">Order Service</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <a href="order.html">Order Service</a>
+  </div>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero" aria-labelledby="hero-title">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <div class="badge"><i class="fa-solid fa-circle-dot"></i> What we do</div>
+      <h1 id="hero-title">Our <em>Services</em></h1>
+      <p>From hands-on device repair to full-scale digital solutions — Gbogolee Tech delivers premium, results-driven tech services across Nigeria and beyond.</p>
+    </div>
+  </section>
+
+  <!-- ===================== STATS STRIP ===================== -->
+  <div class="stats-strip" role="region" aria-label="Statistics">
+    <div class="stat-item">
+      <span class="stat-num" data-target="12">0</span>
+      <span class="stat-label">Services Offered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="150">0</span>
+      <span class="stat-label">Clients Served</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="3">0</span>
+      <span class="stat-label">Years Active</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="98">0</span>
+      <span class="stat-label">% Satisfaction</span>
+    </div>
+  </div>
+
+  <!-- ===================== SERVICES GRID ===================== -->
+  <section class="section" aria-labelledby="services-title">
+    <p class="section-label">All Services</p>
+    <h2 class="section-title" id="services-title">Everything we offer</h2>
+    <p class="section-subtitle">Professional tech solutions tailored to individuals, startups, and growing businesses.</p>
+
+    <div class="services-grid" id="servicesGrid">
+
+      <!-- 01 Phone Repair -->
+      <article class="service-card reveal" aria-labelledby="svc1-title">
+        <span class="service-card-number" aria-hidden="true">01</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <h3 class="service-name" id="svc1-title">Phone Repair Services</h3>
+        <p class="service-desc">Fast, reliable smartphone repairs — screen replacements, battery swaps, charging port fixes, software troubleshooting, and more.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Same-day turnaround available</li>
+          <li><i class="fa-solid fa-check"></i> Genuine-quality replacement parts</li>
+          <li><i class="fa-solid fa-check"></i> Data safety guaranteed</li>
+          <li><i class="fa-solid fa-check"></i> Warranty on all repairs</li>
+        </ul>
+        <a href="order.html?service=Phone+Repair" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 02 Laptop Maintenance -->
+      <article class="service-card reveal" aria-labelledby="svc2-title">
+        <span class="service-card-number" aria-hidden="true">02</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-laptop"></i>
+        </div>
+        <h3 class="service-name" id="svc2-title">Laptop Maintenance & Repairs</h3>
+        <p class="service-desc">Comprehensive laptop care — hardware diagnostics, OS reinstallation, RAM upgrades, keyboard repairs, virus removal, and performance optimization.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Full hardware diagnostics</li>
+          <li><i class="fa-solid fa-check"></i> Software & OS support</li>
+          <li><i class="fa-solid fa-check"></i> Performance tuning</li>
+          <li><i class="fa-solid fa-check"></i> Affordable pricing</li>
+        </ul>
+        <a href="order.html?service=Laptop+Maintenance" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 03 Web Design -->
+      <article class="service-card reveal" aria-labelledby="svc3-title">
+        <span class="service-card-number" aria-hidden="true">03</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <h3 class="service-name" id="svc3-title">Web Design & Development</h3>
+        <p class="service-desc">Modern, responsive, and conversion-focused websites built with cutting-edge technologies. From landing pages to full web applications.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Mobile-first responsive design</li>
+          <li><i class="fa-solid fa-check"></i> SEO optimized from day one</li>
+          <li><i class="fa-solid fa-check"></i> Fast load times &amp; clean code</li>
+          <li><i class="fa-solid fa-check"></i> CMS &amp; e-commerce integration</li>
+        </ul>
+        <a href="order.html?service=Web+Design" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 04 Coding & Programming -->
+      <article class="service-card reveal" aria-labelledby="svc4-title">
+        <span class="service-card-number" aria-hidden="true">04</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <h3 class="service-name" id="svc4-title">Coding & Programming Solutions</h3>
+        <p class="service-desc">Custom software solutions, automation scripts, API integrations, and programming assignments delivered on time, at any complexity level.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> HTML, CSS, JS, Python &amp; more</li>
+          <li><i class="fa-solid fa-check"></i> Clean, documented code</li>
+          <li><i class="fa-solid fa-check"></i> Debugging &amp; bug fixing</li>
+          <li><i class="fa-solid fa-check"></i> API &amp; third-party integrations</li>
+        </ul>
+        <a href="order.html?service=Programming+Solutions" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 05 Flyer Design -->
+      <article class="service-card reveal" aria-labelledby="svc5-title">
+        <span class="service-card-number" aria-hidden="true">05</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-rectangle-ad"></i>
+        </div>
+        <h3 class="service-name" id="svc5-title">Flyer Design</h3>
+        <p class="service-desc">Eye-catching, print-ready and digital flyers that promote your events, products, or services with professional flair and brand consistency.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Print &amp; social media sizes</li>
+          <li><i class="fa-solid fa-check"></i> Fast 24-hour delivery</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited revisions (first order)</li>
+          <li><i class="fa-solid fa-check"></i> High-resolution file export</li>
+        </ul>
+        <a href="order.html?service=Flyer+Design" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 06 Logo Design -->
+      <article class="service-card reveal" aria-labelledby="svc6-title">
+        <span class="service-card-number" aria-hidden="true">06</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-pen-nib"></i>
+        </div>
+        <h3 class="service-name" id="svc6-title">Logo Design</h3>
+        <p class="service-desc">Distinctive, timeless logos crafted to represent your brand identity — provided in all standard formats, fully scalable for any use case.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> SVG, PNG &amp; PDF delivery</li>
+          <li><i class="fa-solid fa-check"></i> Multiple concepts to choose from</li>
+          <li><i class="fa-solid fa-check"></i> Full ownership &amp; rights transfer</li>
+          <li><i class="fa-solid fa-check"></i> Brand color &amp; font guide included</li>
+        </ul>
+        <a href="order.html?service=Logo+Design" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 07 Graphics Design -->
+      <article class="service-card reveal" aria-labelledby="svc7-title">
+        <span class="service-card-number" aria-hidden="true">07</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+        <h3 class="service-name" id="svc7-title">Graphics Design</h3>
+        <p class="service-desc">From social media graphics to full brand identity kits — creative, professional visual content that makes your brand unforgettable online and offline.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Social media content packs</li>
+          <li><i class="fa-solid fa-check"></i> Brand identity design</li>
+          <li><i class="fa-solid fa-check"></i> Banners &amp; billboard designs</li>
+          <li><i class="fa-solid fa-check"></i> Editable source files provided</li>
+        </ul>
+        <a href="order.html?service=Graphics+Design" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 08 CBT System Development -->
+      <article class="service-card reveal" aria-labelledby="svc8-title">
+        <span class="service-card-number" aria-hidden="true">08</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-clipboard-question"></i>
+        </div>
+        <h3 class="service-name" id="svc8-title">CBT System Development</h3>
+        <p class="service-desc">Custom Computer-Based Testing (CBT) platforms for schools, training centres, and organisations — with question banks, timers, grading, and admin dashboards.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Multi-subject &amp; multi-user support</li>
+          <li><i class="fa-solid fa-check"></i> Automatic grading &amp; analytics</li>
+          <li><i class="fa-solid fa-check"></i> Offline &amp; online deployment</li>
+          <li><i class="fa-solid fa-check"></i> Admin dashboard &amp; reports</li>
+        </ul>
+        <a href="order.html?service=CBT+System+Development" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 09 Website Deployment -->
+      <article class="service-card reveal" aria-labelledby="svc9-title">
+        <span class="service-card-number" aria-hidden="true">09</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+        <h3 class="service-name" id="svc9-title">Website Deployment</h3>
+        <p class="service-desc">We handle domain registration, hosting setup, SSL certificates, DNS configuration, and live deployment — getting your site online, fast and secure.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Domain &amp; hosting setup</li>
+          <li><i class="fa-solid fa-check"></i> SSL &amp; security configuration</li>
+          <li><i class="fa-solid fa-check"></i> cPanel &amp; server management</li>
+          <li><i class="fa-solid fa-check"></i> Post-launch support included</li>
+        </ul>
+        <a href="order.html?service=Website+Deployment" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 10 Tech Consultation -->
+      <article class="service-card reveal" aria-labelledby="svc10-title">
+        <span class="service-card-number" aria-hidden="true">10</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <h3 class="service-name" id="svc10-title">Tech Consultation</h3>
+        <p class="service-desc">Get expert advice on technology choices, digital strategy, software stack decisions, and IT infrastructure — tailored specifically to your business needs.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> 1-on-1 strategy sessions</li>
+          <li><i class="fa-solid fa-check"></i> Digital transformation roadmap</li>
+          <li><i class="fa-solid fa-check"></i> Software &amp; tool recommendations</li>
+          <li><i class="fa-solid fa-check"></i> IT infrastructure planning</li>
+        </ul>
+        <a href="order.html?service=Tech+Consultation" class="service-cta">
+          Book Session <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 11 Digital Branding -->
+      <article class="service-card reveal" aria-labelledby="svc11-title">
+        <span class="service-card-number" aria-hidden="true">11</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h3 class="service-name" id="svc11-title">Digital Branding</h3>
+        <p class="service-desc">Build a powerful, consistent digital presence — from brand guidelines and visual identity to social media templates and brand voice strategy.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Brand guideline document</li>
+          <li><i class="fa-solid fa-check"></i> Social media kit included</li>
+          <li><i class="fa-solid fa-check"></i> Brand positioning strategy</li>
+          <li><i class="fa-solid fa-check"></i> Visual identity across platforms</li>
+        </ul>
+        <a href="order.html?service=Digital+Branding" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- 12 Portfolio Website Creation -->
+      <article class="service-card reveal" aria-labelledby="svc12-title">
+        <span class="service-card-number" aria-hidden="true">12</span>
+        <div class="service-icon-wrap" aria-hidden="true">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3 class="service-name" id="svc12-title">Portfolio Website Creation</h3>
+        <p class="service-desc">Premium portfolio websites for creatives, freelancers, and professionals — designed to impress clients, showcase your work, and win more projects.</p>
+        <ul class="service-benefits" aria-label="Benefits">
+          <li><i class="fa-solid fa-check"></i> Custom, fully responsive design</li>
+          <li><i class="fa-solid fa-check"></i> Project showcase &amp; gallery</li>
+          <li><i class="fa-solid fa-check"></i> Contact &amp; inquiry integration</li>
+          <li><i class="fa-solid fa-check"></i> Hosted &amp; deployed for you</li>
+        </ul>
+        <a href="order.html?service=Portfolio+Website" class="service-cta">
+          Order Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </article>
+
+    </div><!-- /services-grid -->
+  </section>
+
+  <!-- ===================== WORKFLOW (RETE.JS) SECTION ===================== -->
+  <section class="section workflow-section" aria-labelledby="workflow-title">
+    <p class="section-label">Our Process</p>
+    <h2 class="section-title" id="workflow-title">How we work</h2>
+    <p class="section-subtitle">Every project follows a structured, transparent process — from your first inquiry to long-term support.</p>
+
+    <!-- Visual fallback workflow (always rendered) -->
+    <div class="workflow-visual" role="list" aria-label="Service workflow steps">
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>Client<br>Inquiry</span>
+        </div>
+        <span class="wf-step-num">01</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-handshake"></i>
+          <span>Consultation</span>
+        </div>
+        <span class="wf-step-num">02</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-pencil-ruler"></i>
+          <span>Planning</span>
+        </div>
+        <span class="wf-step-num">03</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-gears"></i>
+          <span>Development</span>
+        </div>
+        <span class="wf-step-num">04</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-vial-circle-check"></i>
+          <span>Testing</span>
+        </div>
+        <span class="wf-step-num">05</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-rocket"></i>
+          <span>Delivery</span>
+        </div>
+        <span class="wf-step-num">06</span>
+      </div>
+
+      <div class="wf-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+
+      <div class="workflow-step reveal" role="listitem">
+        <div class="wf-node" tabindex="0">
+          <i class="fa-solid fa-headset"></i>
+          <span>Support</span>
+        </div>
+        <span class="wf-step-num">07</span>
+      </div>
+
+    </div><!-- /workflow-visual -->
+
+    <!-- Rete.js canvas (enhanced interactive view) -->
+    <div id="rete-container" aria-label="Interactive workflow diagram" style="margin-top:2.5rem;"></div>
+
+  </section>
+
+  <!-- ===================== CTA STRIP ===================== -->
+  <div class="cta-strip" role="complementary" aria-label="Call to action">
+    <div class="cta-text">
+      <h2>Ready to start your<br>next project?</h2>
+      <p>Reach out today — Gbogolee Tech is ready to deliver.</p>
+    </div>
+    <div class="cta-buttons">
+      <a href="order.html" class="btn-primary">
+        <i class="fa-solid fa-bolt"></i> Order a Service
+      </a>
+      <a href="https://wa.me/2349052832966" class="btn-secondary" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Gbogolee Tech</h3>
+        <p>Premium tech solutions for individuals, startups, and businesses — based in Nigeria, serving the world.</p>
+        <div class="footer-contact">
+          <a href="mailto:oladejooluwagbogo@gmail.com">
+            <i class="fa-solid fa-envelope"></i> oladejooluwagbogo@gmail.com
+          </a>
+          <a href="https://wa.me/2349052832966" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> +234 905 283 2966
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-location-dot"></i> Nigeria
+          </a>
+        </div>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="order.html">Order Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="order.html?service=Phone+Repair">Phone Repair</a></li>
+          <li><a href="order.html?service=Laptop+Maintenance">Laptop Repairs</a></li>
+          <li><a href="order.html?service=Web+Design">Web Design</a></li>
+          <li><a href="order.html?service=Logo+Design">Logo Design</a></li>
+          <li><a href="order.html?service=CBT+System">CBT Systems</a></li>
+          <li><a href="order.html?service=Digital+Branding">Digital Branding</a></li>
+          <li><a href="order.html?service=Tech+Consultation">Tech Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Gbogolee Tech. All rights reserved.</span>
+      <span>Built by Oladejo Oluwagbogo Isabela</span>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    /* -------------------------------------------------------
+       NAVIGATION — hamburger / mobile menu
+    ------------------------------------------------------- */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu  = document.getElementById('closeMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    const closeMobileMenu = () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    closeMenu.addEventListener('click', closeMobileMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+    /* -------------------------------------------------------
+       SCROLL REVEAL
+    ------------------------------------------------------- */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger cards
+          const delay = (entry.target.closest('.services-grid')
+            ? Array.from(document.querySelectorAll('.service-card')).indexOf(entry.target)
+            : Array.from(document.querySelectorAll('.reveal')).indexOf(entry.target)) * 60;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* -------------------------------------------------------
+       COUNTER ANIMATION
+    ------------------------------------------------------- */
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el     = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.target.toString().endsWith('%') ? '%' : '';
+        let start    = 0;
+        const step   = Math.ceil(target / 60);
+        const tick   = () => {
+          start = Math.min(start + step, target);
+          el.textContent = start + suffix;
+          if (start < target) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    /* -------------------------------------------------------
+       FOOTER YEAR
+    ------------------------------------------------------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* -------------------------------------------------------
+       ORDER LINK — pre-fill service from query string
+    ------------------------------------------------------- */
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('service')) {
+      // If landing here from another page with service param, could auto-scroll
+    }
+
+    /* -------------------------------------------------------
+       RETE.JS WORKFLOW CANVAS
+       Renders a simple node-based flow showing the service
+       process. Falls back gracefully if Rete fails to load.
+    ------------------------------------------------------- */
+    (function initReteWorkflow() {
+      const container = document.getElementById('rete-container');
+      if (!container) return;
+
+      // Steps definition
+      const steps = [
+        { id: 1, label: 'Client Inquiry',  icon: '📩', x: 40,  y: 160 },
+        { id: 2, label: 'Consultation',    icon: '🤝', x: 200, y: 80  },
+        { id: 3, label: 'Planning',        icon: '📐', x: 360, y: 160 },
+        { id: 4, label: 'Development',     icon: '⚙️', x: 520, y: 80  },
+        { id: 5, label: 'Testing',         icon: '✅', x: 680, y: 160 },
+        { id: 6, label: 'Delivery',        icon: '🚀', x: 840, y: 80  },
+        { id: 7, label: 'Support',         icon: '🎧', x: 1000,y: 160 },
+      ];
+      const edges = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
+
+      // Build an SVG-based interactive canvas (Rete 2.x API requires a bundler;
+      // we implement a lightweight equivalent that's fully functional here).
+      const NS  = 'http://www.w3.org/2000/svg';
+      const W   = container.clientWidth || 900;
+      const H   = 460;
+      const NW  = 130; // node width
+      const NH  = 68;  // node height
+
+      // Scale nodes to container width
+      const scaleX = (W - 40) / 1100;
+      const scaleY = 1;
+
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', H);
+      svg.style.display = 'block';
+      svg.setAttribute('aria-hidden', 'true');
+      container.appendChild(svg);
+
+      // Defs: arrowhead
+      const defs = document.createElementNS(NS, 'defs');
+      defs.innerHTML = `
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9e9e9e"/>
+        </marker>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      `;
+      svg.appendChild(defs);
+
+      // Background grid
+      const gridGroup = document.createElementNS(NS, 'g');
+      gridGroup.setAttribute('stroke', '#e8e8e8');
+      gridGroup.setAttribute('stroke-width', '0.5');
+      for (let gx = 0; gx < W; gx += 40) {
+        const l = document.createElementNS(NS, 'line');
+        l.setAttribute('x1', gx); l.setAttribute('y1', 0);
+        l.setAttribute('x2', gx); l.setAttribute('y2', H);
+        gridGroup.appendChild(l);
+      }
+      for (let gy = 0; gy < H; gy += 40) {
+        const l = document.createElementNS(NS, 'line');
+        l.setAttribute('x1', 0); l.setAttribute('y1', gy);
+        l.setAttribute('x2', W); l.setAttribute('y2', gy);
+        gridGroup.appendChild(l);
+      }
+      svg.appendChild(gridGroup);
+
+      // Helper to get node centre
+      const cx = step => step.x * scaleX + 20 + NW / 2;
+      const cy = step => step.y * scaleY + 40 + NH / 2;
+
+      // Draw edges
+      edges.forEach(([fromId, toId]) => {
+        const from = steps.find(s => s.id === fromId);
+        const to   = steps.find(s => s.id === toId);
+        if (!from || !to) return;
+        const path = document.createElementNS(NS, 'path');
+        const x1 = cx(from), y1 = cy(from);
+        const x2 = cx(to) - NW / 2 - 6, y2 = cy(to);
+        const mx = (x1 + x2) / 2;
+        path.setAttribute('d', `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', '#c8c8c8');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('marker-end', 'url(#arrow)');
+        svg.appendChild(path);
+      });
+
+      // Draw nodes
+      steps.forEach((step, idx) => {
+        const nx = step.x * scaleX + 20;
+        const ny = step.y * scaleY + 40;
+
+        const g = document.createElementNS(NS, 'g');
+        g.setAttribute('transform', `translate(${nx},${ny})`);
+        g.style.cursor = 'pointer';
+
+        // Shadow rect
+        const shadow = document.createElementNS(NS, 'rect');
+        shadow.setAttribute('x', 3); shadow.setAttribute('y', 3);
+        shadow.setAttribute('width', NW); shadow.setAttribute('height', NH);
+        shadow.setAttribute('rx', 12);
+        shadow.setAttribute('fill', 'rgba(0,0,0,0.06)');
+        g.appendChild(shadow);
+
+        // Main rect
+        const rect = document.createElementNS(NS, 'rect');
+        rect.setAttribute('width', NW); rect.setAttribute('height', NH);
+        rect.setAttribute('rx', 12);
+        rect.setAttribute('fill', '#ffffff');
+        rect.setAttribute('stroke', '#e8e8e8');
+        rect.setAttribute('stroke-width', '1.5');
+        g.appendChild(rect);
+
+        // Step number pill
+        const pill = document.createElementNS(NS, 'rect');
+        pill.setAttribute('x', NW - 28); pill.setAttribute('y', 6);
+        pill.setAttribute('width', 22); pill.setAttribute('height', 16);
+        pill.setAttribute('rx', 8);
+        pill.setAttribute('fill', '#0a0a0a');
+        g.appendChild(pill);
+        const pillTxt = document.createElementNS(NS, 'text');
+        pillTxt.setAttribute('x', NW - 17); pillTxt.setAttribute('y', 18);
+        pillTxt.setAttribute('text-anchor', 'middle');
+        pillTxt.setAttribute('fill', '#e8ff00');
+        pillTxt.setAttribute('font-size', '8');
+        pillTxt.setAttribute('font-weight', '700');
+        pillTxt.setAttribute('font-family', 'Syne, sans-serif');
+        pillTxt.textContent = `0${step.id}`;
+        g.appendChild(pillTxt);
+
+        // Icon
+        const icon = document.createElementNS(NS, 'text');
+        icon.setAttribute('x', NW / 2); icon.setAttribute('y', 30);
+        icon.setAttribute('text-anchor', 'middle');
+        icon.setAttribute('font-size', '18');
+        icon.textContent = step.icon;
+        g.appendChild(icon);
+
+        // Label
+        const label = document.createElementNS(NS, 'text');
+        label.setAttribute('x', NW / 2); label.setAttribute('y', 52);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('fill', '#0a0a0a');
+        label.setAttribute('font-size', '9.5');
+        label.setAttribute('font-weight', '700');
+        label.setAttribute('font-family', 'Syne, sans-serif');
+        label.textContent = step.label;
+        g.appendChild(label);
+
+        // Hover interaction
+        g.addEventListener('mouseenter', () => {
+          rect.setAttribute('stroke', '#00c9a7');
+          rect.setAttribute('stroke-width', '2');
+          rect.setAttribute('fill', '#f0fffe');
+        });
+        g.addEventListener('mouseleave', () => {
+          rect.setAttribute('stroke', '#e8e8e8');
+          rect.setAttribute('stroke-width', '1.5');
+          rect.setAttribute('fill', '#ffffff');
+        });
+
+        // Animate entrance
+        g.style.opacity = '0';
+        g.style.transform = `translate(${nx}px,${ny + 20}px)`;
+        setTimeout(() => {
+          g.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          g.style.opacity = '1';
+          g.style.transform = `translate(${nx}px,${ny}px)`;
+        }, 300 + idx * 120);
+
+        svg.appendChild(g);
+      });
+
+      // Label below SVG
+      const caption = document.createElement('p');
+      caption.textContent = 'Interactive service workflow — hover over each node to explore the process.';
+      caption.style.cssText = 'text-align:center;font-size:0.78rem;color:#9e9e9e;margin-top:0.8rem;font-family:DM Sans,sans-serif;';
+      container.after(caption);
+    })();
+  </script>
+
+</body>
+</html>
