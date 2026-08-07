@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Client reviews and ratings for Gbogolee Tech — read what our clients say and leave your own review." />
-  <meta name="keywords" content="Gbogolee Tech reviews, ratings, client testimonials, Nigeria tech" />
-  <title>Reviews &amp; Ratings | Gbogolee Tech</title>
+  <meta name="description" content="Client reviews and ratings for Erudiq Tech — read what our clients say and leave your own review." />
+  <meta name="keywords" content="Erudiq Tech reviews, ratings, client testimonials, Nigeria tech" />
+  <title>Reviews &amp; Ratings | Erudiq Tech</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -855,7 +855,7 @@
        NAVIGATION
   ====================================================== -->
   <nav class="nav" id="navbar">
-    <div class="nav-logo"> <img src="logo.jpg" alt="" style="width: auto; height: 50px; border-radius: 50%;">Gbogolee<span>Tech</span></div>
+    <div class="nav-logo"> <img src="logo.jpg" alt="" style="width: auto; height: 50px; border-radius: 50%;">Erudiq<span>Tech</span></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -956,7 +956,7 @@
       <div class="no-reviews" id="noReviews">
         <i class="fas fa-comment-slash"></i>
         <h3>No reviews yet</h3>
-        <p>Be the first to share your experience with Gbogolee Tech!</p>
+        <p>Be the first to share your experience with Erudiq Tech!</p>
       </div>
 
       <!-- Reviews container -->
@@ -1049,7 +1049,7 @@
   ====================================================== -->
   <div class="cta-strip reveal">
     <h2>Ready to be our next success story?</h2>
-    <p>Join 85+ satisfied clients across Nigeria who trust Gbogolee Tech for their digital needs.</p>
+    <p>Join 85+ satisfied clients across Nigeria who trust Erudiq Tech for their digital needs.</p>
     <div class="cta-btns">
       <a href="order.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Order a Service</a>
       <a href="portfolio.html" class="btn btn-outline"><i class="fas fa-briefcase"></i> View Portfolio</a>
@@ -1062,7 +1062,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo">Gbogolee<span>Tech</span></div>
+        <div class="footer-logo">Erudiq<span>Tech</span></div>
         <p>Premium tech services for businesses and individuals across Nigeria.</p>
       </div>
       <div class="footer-col">
@@ -1086,7 +1086,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Gbogolee Tech · Oladejo Oluwagbogo Isabela · All rights reserved</span>
+      <span>© 2024 Erudiq Tech · Oladejo Oluwagbogo Isabela · All rights reserved</span>
       <div class="social-icons">
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1118,7 +1118,7 @@
     /* Initialize Firebase */
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-    const COLLECTION = "gbogolee_reviews";
+    const COLLECTION = "erudiq_reviews";
 
     /* ================================================================
        STATE
@@ -1126,7 +1126,7 @@
     let allReviews    = [];   // full cache from Firestore
     let displayedMax  = 6;    // cards shown at once
     let selectedRating = 0;
-    let helpfulMap    = JSON.parse(localStorage.getItem('gbHelpful') || '{}');
+    let helpfulMap    = JSON.parse(localStorage.getItem('erudiqHelpful') || '{}');
 
     /* ================================================================
        SEED / DEMO REVIEWS  (shown if Firestore is empty / not configured)
@@ -1137,7 +1137,7 @@
         name: 'Chukwuemeka Adaeze',
         service: 'Web Design & Development',
         rating: 5,
-        comment: 'Absolutely outstanding! Gbogolee Tech built our company website in record time and it looks better than anything we could have imagined. Professional, responsive, and incredibly talented.',
+        comment: 'Absolutely outstanding! Erudiq Tech built our company website in record time and it looks better than anything we could have imagined. Professional, responsive, and incredibly talented.',
         timestamp: new Date('2024-11-18'),
         helpful: 14
       },
@@ -1173,7 +1173,7 @@
         name: 'Ibrahim Musa',
         service: 'Laptop Maintenance & Repair',
         rating: 5,
-        comment: 'My laptop was completely dead. Brought it to Gbogolee Tech and within two days it was running faster than when I first bought it. Honest pricing, great communication, zero drama.',
+        comment: 'My laptop was completely dead. Brought it to Erudiq Tech and within two days it was running faster than when I first bought it. Honest pricing, great communication, zero drama.',
         timestamp: new Date('2024-09-30'),
         helpful: 12
       },
@@ -1200,7 +1200,7 @@
         name: 'Amaka Nwosu',
         service: 'Portfolio Website',
         rating: 5,
-        comment: 'As a freelance photographer I needed a portfolio site that wowed clients. Gbogolee Tech delivered a stunning, mobile-optimised site that has already landed me three new bookings.',
+        comment: 'As a freelance photographer I needed a portfolio site that wowed clients. Erudiq Tech delivered a stunning, mobile-optimised site that has already landed me three new bookings.',
         timestamp: new Date('2024-08-05'),
         helpful: 11
       }
@@ -1327,7 +1327,7 @@
         const id  = btn.dataset.id;
         if (helpfulMap[id]) return; // already liked
         helpfulMap[id] = true;
-        localStorage.setItem('gbHelpful', JSON.stringify(helpfulMap));
+        localStorage.setItem('erudiqHelpful', JSON.stringify(helpfulMap));
         btn.classList.add('liked');
         const current = parseInt(btn.textContent.match(/\d+/)[0]);
         btn.innerHTML = `<i class="fas fa-thumbs-up"></i> Helpful (${current + 1})`;
